@@ -35,10 +35,11 @@ interface ResponseStructure {
 export const requestConfig: RequestConfig = {
   baseURL: "http://localhost:8080",
   withCredentials: true,
-
   // 请求拦截器
   requestInterceptors: [
     (config: RequestOptions) => {
+      console.log("=========")
+      console.log(config)
       // 拦截请求配置，进行个性化处理。
       const url = config?.url?.concat('?token = 123');
       return {...config, url};
