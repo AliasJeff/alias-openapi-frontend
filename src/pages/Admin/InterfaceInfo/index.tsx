@@ -219,16 +219,6 @@ const TableList: React.FC = () => {
     {
       title: (
         <FormattedMessage
-          id="pages.searchTable.requestParams"
-          defaultMessage="请求参数"
-        />
-      ),
-      dataIndex: 'requestParams',
-      valueType: 'textarea'
-    },
-    {
-      title: (
-        <FormattedMessage
           id="pages.searchTable.requestHeader"
           defaultMessage="请求头"
         />
@@ -244,6 +234,15 @@ const TableList: React.FC = () => {
         />
       ),
       dataIndex: 'responseHeader',
+      valueType: 'textarea'
+    },{
+      title: (
+        <FormattedMessage
+          id="pages.searchTable.price"
+          defaultMessage="计费规则(元/条)"
+        />
+      ),
+      dataIndex: 'price',
       valueType: 'textarea'
     },
     {

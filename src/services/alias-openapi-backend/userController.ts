@@ -117,6 +117,21 @@ export async function registerUsingPOST(
   });
 }
 
+/** sendEmail POST /api/user/sendEmail */
+export async function sendEmailUsingPOST(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.sendEmailUsingPOSTParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponsestring>('/api/user/sendEmail', {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 /** updateUser POST /api/user/update */
 export async function updateUserUsingPOST(
   body: API.UserUpdateRequest,

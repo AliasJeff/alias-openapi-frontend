@@ -65,6 +65,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponsestring = {
+    code?: number;
+    data?: string;
+    message?: string;
+  };
+
   type BaseResponseUser = {
     code?: number;
     data?: User;
@@ -114,6 +120,7 @@ declare namespace API {
     isDelete?: number;
     method?: string;
     name?: string;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -127,6 +134,7 @@ declare namespace API {
     description?: string;
     method?: string;
     name?: string;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -144,6 +152,7 @@ declare namespace API {
     id?: number;
     method?: string;
     name?: string;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -158,6 +167,7 @@ declare namespace API {
     id?: number;
     method?: string;
     name?: string;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -175,6 +185,7 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: number;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -194,6 +205,7 @@ declare namespace API {
     method?: string;
     name?: string;
     pageSize?: number;
+    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
@@ -210,6 +222,7 @@ declare namespace API {
     avatar?: string;
     createTime?: string;
     current?: number;
+    email?: string;
     gender?: number;
     id?: number;
     pageSize?: number;
@@ -253,6 +266,7 @@ declare namespace API {
     avatar?: string;
     createTime?: string;
     current?: number;
+    email?: string;
     gender?: number;
     id?: number;
     pageSize?: number;
@@ -386,11 +400,17 @@ declare namespace API {
     total?: number;
   };
 
+  type sendEmailUsingPOSTParams = {
+    /** email */
+    email?: string;
+  };
+
   type User = {
     accessKey?: string;
     account?: string;
     avatar?: string;
     createTime?: string;
+    email?: string;
     gender?: number;
     id?: number;
     isDelete?: number;
@@ -406,6 +426,7 @@ declare namespace API {
     accessKey?: string;
     account?: string;
     avatar?: string;
+    email?: string;
     gender?: number;
     password?: string;
     phone?: string;
@@ -449,6 +470,8 @@ declare namespace API {
   type UserRegisterRequest = {
     account?: string;
     checkPassword?: string;
+    code?: string;
+    email?: string;
     password?: string;
   };
 
@@ -456,6 +479,7 @@ declare namespace API {
     accessKey?: string;
     account?: string;
     avatar?: string;
+    email?: string;
     gender?: number;
     id?: number;
     password?: string;
@@ -468,6 +492,7 @@ declare namespace API {
     account?: string;
     avatar?: string;
     createTime?: string;
+    email?: string;
     gender?: number;
     id?: number;
     phone?: string;
