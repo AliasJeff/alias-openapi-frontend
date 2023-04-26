@@ -144,6 +144,7 @@ const Login: React.FC = () => {
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
         });
+        setTimeout(100); // 下面是异步的更新方法，不能立即拿到登录信息，所以得到数据后等待100ms
         fetchUserInfo(res?.data)
         setInitialState({
           loginUser: res.data
@@ -155,22 +156,6 @@ const Login: React.FC = () => {
 
         // return;
       }
-
-      const res2 = await loginUsingPOST({...values});
-      if (res2.message === 'ok') {
-
-        setInitialState({
-          loginUser: res2.data
-        })
-        // message.success(defaultLoginSuccessMessage);
-        // await fetchUserInfo();
-        const urlParams = new URL(window.location.href).searchParams;
-        history.push(urlParams.get('redirect') || '/');
-
-        return;
-      }
-
-
     } catch (error) {
       const defaultLoginFailureMessage = intl.formatMessage({
         id: 'pages.login.failure',
