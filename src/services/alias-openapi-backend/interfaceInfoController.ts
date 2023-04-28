@@ -47,8 +47,8 @@ export async function getInterfaceInfoByIdUsingGET(
   });
 }
 
-/** invokeInterfaceInfo POST /api/interfaceInfo/invoke */
-export async function invokeInterfaceInfoUsingPOST(
+/** invokeInterface POST /api/interfaceInfo/invoke */
+export async function invokeInterfaceUsingPOST(
   body: API.InterfaceInfoInvokeRequest,
   options?: { [key: string]: any },
 ) {

@@ -17,6 +17,21 @@ export async function addUserInterfaceInfoUsingPOST(
   });
 }
 
+/** getAvailableInterfaceInfo GET /api/userInterfaceInfo/available */
+export async function getAvailableInterfaceInfoUsingGET(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.getAvailableInterfaceInfoUsingGETParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponseIPageInterfaceInfo>('/api/userInterfaceInfo/available', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 /** deleteUserInterfaceInfo POST /api/userInterfaceInfo/delete */
 export async function deleteUserInterfaceInfoUsingPOST(
   body: API.DeleteRequest,

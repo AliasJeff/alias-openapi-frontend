@@ -11,6 +11,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseIPageInterfaceInfo = {
+    code?: number;
+    data?: IPageInterfaceInfo;
+    message?: string;
+  };
+
   type BaseResponseListInterfaceInfo = {
     code?: number;
     data?: InterfaceInfo[];
@@ -93,6 +99,26 @@ declare namespace API {
     id?: number;
   };
 
+  type getAvailableInterfaceInfoUsingGETParams = {
+    createTime?: string;
+    creator?: number;
+    current?: number;
+    description?: string;
+    id?: number;
+    method?: string;
+    name?: string;
+    pageSize?: number;
+    price?: number;
+    requestHeader?: string;
+    requestParams?: string;
+    responseHeader?: string;
+    sortField?: string;
+    sortOrder?: string;
+    status?: number;
+    updateTime?: string;
+    url?: string;
+  };
+
   type getInterfaceInfoByIdUsingGETParams = {
     /** id */
     id?: number;
@@ -118,6 +144,7 @@ declare namespace API {
     description?: string;
     id?: number;
     isDelete?: number;
+    leftNum?: number;
     method?: string;
     name?: string;
     price?: number;
@@ -144,6 +171,8 @@ declare namespace API {
 
   type InterfaceInfoInvokeRequest = {
     id?: number;
+    method?: string;
+    url?: string;
     userRequestParams?: string;
   };
 
@@ -165,6 +194,7 @@ declare namespace API {
     creator?: number;
     description?: string;
     id?: number;
+    leftNum?: number;
     method?: string;
     name?: string;
     price?: number;
@@ -174,6 +204,14 @@ declare namespace API {
     status?: number;
     updateTime?: string;
     url?: string;
+  };
+
+  type IPageInterfaceInfo = {
+    current?: number;
+    pages?: number;
+    records?: InterfaceInfo[];
+    size?: number;
+    total?: number;
   };
 
   type listInterfaceInfoByPageUsingGETParams = {
