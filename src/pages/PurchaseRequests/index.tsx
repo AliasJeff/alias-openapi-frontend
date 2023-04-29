@@ -16,7 +16,7 @@ import {
   Tooltip
 } from 'antd';
 import React, {useRef, useState} from 'react';
-import {history, useModel} from "@@/exports";
+import {FormattedMessage, history, useModel} from "@@/exports";
 import {listInterfaceInfoByPageUsingGET} from "@/services/alias-openapi-backend/interfaceInfoController";
 import {getAvailableInterfaceInfoUsingGET} from "@/services/alias-openapi-backend/userInterfaceInfoController";
 
@@ -50,7 +50,6 @@ const Index: React.FC = () => {
       },
       {
         title: '请求地址',
-        key: 'status1',
         dataIndex: 'url',
         align: 'center',
       },
@@ -58,6 +57,22 @@ const Index: React.FC = () => {
         title: '请求方式',
         dataIndex: 'method',
         align: 'center',
+      },
+      {
+        title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="状态"/>,
+        dataIndex: 'status',
+        align: 'center',
+        hideInForm: true,
+        valueEnum: {
+          0: {
+            text: '关闭',
+            status: 'Default',
+          },
+          1: {
+            text: '开启',
+            status: 'Processing',
+          },
+        },
       },
       {
         title: '计费规则(元/条)',
@@ -83,12 +98,11 @@ const Index: React.FC = () => {
       {
         title: '请求名称',
         dataIndex: 'name',
-        render: (_, record) => <Popover content={record.charge + '元/条'}><a>{_}</a></Popover>,
+        render: (_, record) => <Popover content={record.price + '元/条'}><a>{_}</a></Popover>,
         align: 'center',
       },
       {
         title: '描述',
-        key: 'status2',
         dataIndex: 'description',
         align: 'center',
       },
@@ -103,6 +117,22 @@ const Index: React.FC = () => {
         dataIndex: 'method',
         valueType: 'select',
         align: 'center',
+      },
+      {
+        title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="状态"/>,
+        dataIndex: 'status',
+        align: 'center',
+        hideInForm: true,
+        valueEnum: {
+          0: {
+            text: '关闭',
+            status: 'Default',
+          },
+          1: {
+            text: '开启',
+            status: 'Processing',
+          },
+        },
       },
       {
         title: '计费规则(元/条)',
@@ -129,7 +159,7 @@ const Index: React.FC = () => {
         totalAmount: totalMoney,
         orderNum: inputNumberValue,
         interfaceId: confirmData?.id,
-        charging: confirmData?.charging
+        charging: confirmData?.price
       })
       if (res.code === 0) {
         actionRef.current?.reload()

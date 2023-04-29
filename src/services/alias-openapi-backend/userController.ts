@@ -14,6 +14,14 @@ export async function addUserUsingPOST(body: API.UserAddRequest, options?: { [ke
   });
 }
 
+/** getUserAuth GET /api/user/auth */
+export async function getUserAuthUsingGET(options?: { [key: string]: any }) {
+  return request<API.BaseResponseUserAuthVO>('/api/user/auth', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** getLoginUser GET /api/user/currentUser */
 export async function getLoginUserUsingGET(options?: { [key: string]: any }) {
   return request<API.BaseResponseUserVO>('/api/user/currentUser', {

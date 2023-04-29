@@ -83,6 +83,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseUserAuthVO = {
+    code?: number;
+    data?: UserAuthVO;
+    message?: string;
+  };
+
   type BaseResponseUserInterfaceInfo = {
     code?: number;
     data?: UserInterfaceInfo;
@@ -471,6 +477,11 @@ declare namespace API {
     role?: string;
     secretKey?: string;
     username?: string;
+  };
+
+  type UserAuthVO = {
+    accessKey?: string;
+    secretKey?: string;
   };
 
   type UserInterfaceInfo = {
