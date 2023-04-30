@@ -61,12 +61,12 @@ const Index: React.FC = () => {
       <Alert type="success" message="开发不易，给孩子点个Stars吧(˚ ˃̣̣̥᷄⌓˂̣̣̥᷅ )~ →→→→→→→→→" showIcon
              action={[
                <Button size="small" onClick={() => {
-                 window.open("https://github.com/YukeSeko/YukeSeko-Interface")
+                 window.open("https://github.com/AliasJeff?tab=repositories")
                }} type="link">
                  这次一定！(Github)
                </Button>,
                <Button size="small" onClick={() => {
-                 console.log('点击了第二个按钮');
+                 window.open("https://gitee.com/AliasJeff")
                }} type="link">
                  这次一定！(Gitee)
                </Button>
