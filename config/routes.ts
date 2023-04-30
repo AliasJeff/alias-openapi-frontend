@@ -1,6 +1,16 @@
 ﻿export default [
-  { path: '/', name: '主页', icon: 'crown', component: './Index' },
-  { path: '/interface_info/:id', name: '查看接口', icon: 'smile', component: './InterfaceInfo', hideInMenu: true },
+  { path: '/',
+    name: '主页',
+    icon: 'crown',
+    routes: [{ path: '/', component: './Index/index'}],
+  },
+
+  { path: '/interface_info/:id',
+    name: '查看接口',
+    icon: 'smile',
+    component: './OnlineCall/InterfaceInfo',
+    hideInMenu: true
+  },
 
   { path: '/online_call', name: '在线调用', icon: 'AppstoreOutlined',
     routes: [
@@ -15,23 +25,24 @@
   },
 
   {
-    path: '/get_request_counts',
+    path: '/request_counts',
     name: '购买次数',
-    icon: 'crown',
-    routes: [{ path: '/get_request_counts', component: './PurchaseRequests/index'}],
+    icon: 'shoppingCart',
+    routes: [{ path: '/request_counts', component: './PurchaseRequests/index'}],
   },
-  // {
-  //   path: '/my_order_info',
-  //   name: '我的订单',
-  //   icon: 'ContainerOutlined',
-  //   routes: [{ path: '/my_order_info', component: './Order/myOrderInfo'}],
-  // },
-  // {
-  //   path:'/order',
-  //   layout: false,
-  //   routes: [{name: '订单支付',path:'/order/order',component:'./Order/order'},
-  //     {name: '支付状态查询',path: '/order/paymentStatus',component: './Order/payStatus'}]
-  // },
+
+  {
+    path: '/orders',
+    name: '我的订单',
+    icon: 'ContainerOutlined',
+    routes: [{ path: '/orders', component: './Order/myOrderInfo'}],
+  },
+  {
+    path:'/order',
+    layout: false,
+    routes: [{name: '订单支付',path:'/order/order',component:'./Order/order'},
+      {name: '支付状态查询',path: '/order/paymentStatus',component: './Order/payStatus'}]
+  },
 
   {
     path: '/user',

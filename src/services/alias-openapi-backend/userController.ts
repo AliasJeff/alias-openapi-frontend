@@ -60,6 +60,14 @@ export async function getUserByIdUsingGET(
   });
 }
 
+/** getUserCount GET /api/user/getUserCount */
+export async function getUserCountUsingGET(options?: { [key: string]: any }) {
+  return request<API.BaseResponselong>('/api/user/getUserCount', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
 /** listUser GET /api/user/list */
 export async function listUserUsingGET(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

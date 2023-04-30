@@ -6,9 +6,6 @@ import {history} from "@umijs/max";
 import {Button, Descriptions, message, Modal, Tag, Tooltip} from "antd";
 import ProCard from "@ant-design/pro-card";
 import {Statistic} from 'antd';
-import {ExclamationCircleFilled} from "@ant-design/icons";
-import {cancelOrderSnUsingPOST} from "@/services/api-order/orderController";
-import {payUsingPOST} from "@/services/api-thirdParty/aliPayController";
 
 const {Countdown} = Statistic;
 const Order: React.FC = () => {

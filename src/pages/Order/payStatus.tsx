@@ -7,7 +7,6 @@ import {Button, Descriptions, message, Modal, Popconfirm, Result, Spin, Tag, Too
 import ProCard from "@ant-design/pro-card";
 import {LoadingOutlined} from "@ant-design/icons";
 import Paragraph from "antd/es/typography/Paragraph";
-import {queryTradeStatusUsingGET} from "@/services/api-thirdParty/aliPayController";
 
 const payStatus: React.FC = () => {
   const [orderData, setOrderData] = useState<API.OrderSnVo>()

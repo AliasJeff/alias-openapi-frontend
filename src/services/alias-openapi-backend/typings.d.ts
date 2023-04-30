@@ -5,6 +5,12 @@ declare namespace API {
     message?: string;
   };
 
+  type BaseResponseint = {
+    code?: number;
+    data?: number;
+    message?: string;
+  };
+
   type BaseResponseInterfaceInfo = {
     code?: number;
     data?: InterfaceInfo;
@@ -203,11 +209,11 @@ declare namespace API {
     leftNum?: number;
     method?: string;
     name?: string;
-    price?: number;
     requestHeader?: string;
     requestParams?: string;
     responseHeader?: string;
     status?: number;
+    totalNum?: number;
     updateTime?: string;
     url?: string;
   };

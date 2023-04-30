@@ -1,16 +1,12 @@
-import {PageContainer} from '@ant-design/pro-components';
+import {PageContainer, ProDescriptions} from '@ant-design/pro-components';
 import React, {useEffect, useState} from 'react';
-import {Button, Card, Descriptions, Form, message, Input, Spin, Divider} from 'antd';
+import {Button, Card, Form, message, Input, Divider, Alert, Switch, Tag, Empty} from 'antd';
 import {
   getInterfaceInfoByIdUsingGET,
   invokeInterfaceUsingPOST,
 } from '@/services/alias-openapi-backend/interfaceInfoController';
 import {useParams} from '@@/exports';
 
-/**
- * 主页
- * @constructor
- */
 const Index: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<API.InterfaceInfo>();
@@ -84,26 +80,39 @@ const Index: React.FC = () => {
     <PageContainer title="查看接口文档">
       <Card>
         {data ? (
-          <Descriptions title={data.name} column={1}>
-            <Descriptions.Item label="接口状态">{data.status ? '开启' : '关闭'}</Descriptions.Item>
-            <Descriptions.Item label="描述">{data.description}</Descriptions.Item>
-            <Descriptions.Item label="请求地址">{data.url}</Descriptions.Item>
-            <Descriptions.Item label="请求方法">{data.method}</Descriptions.Item>
-            <Descriptions.Item label="请求参数">{data.requestParams}</Descriptions.Item>
-            <Descriptions.Item label="请求头">{data.requestHeader}</Descriptions.Item>
-            <Descriptions.Item label="响应头">{data.responseHeader}</Descriptions.Item>
-            <Descriptions.Item label="创建时间">{new Date(data.createTime).toLocaleString()}</Descriptions.Item>
-            <Descriptions.Item label="更新时间">{new Date(data.updateTime).toLocaleString()}</Descriptions.Item>
-          </Descriptions>
+          <ProDescriptions  title={data.name} column={1}>
+            <ProDescriptions.Item label="接口状态">
+              {<Switch disabled={true} checked={data.status !== 0} />}
+            </ProDescriptions.Item>
+            <ProDescriptions.Item label="描述">{data.description}</ProDescriptions.Item>
+            <ProDescriptions.Item label="请求地址">{data.url}</ProDescriptions.Item>
+            <ProDescriptions.Item label="请求方法">
+              {<Tag color="success">{data.method}</Tag>}
+            </ProDescriptions.Item>
+            <ProDescriptions.Item label="请求头" valueType="jsonCode">{data.requestHeader}</ProDescriptions.Item>
+            <ProDescriptions.Item label="请求参数">{data.requestParams}</ProDescriptions.Item>
+            <ProDescriptions.Item label="响应头" valueType="jsonCode">{data.responseHeader}</ProDescriptions.Item>
+            <ProDescriptions.Item label="剩余调用次数">
+              <Tag color={data.leftNum ? (data?.leftNum > 10 ? '#87d068' : '#f50') : '#f50'}>
+                {data.leftNum}
+              </Tag>
+            </ProDescriptions.Item>
+          </ProDescriptions >
         ) : (
-          <>接口不存在</>
+          <Empty />
         )}
       </Card>
       <Divider/>
+      <Alert
+        message="提示"
+        banner
+        description="为了接口调用正常，填写请求参数前请阅读上方给出的请求参数格式，根据给出的格式填写您的请求参数。"
+      />
       <Card title="在线测试">
         <Form name="invoke" layout="vertical" onFinish={onFinish}>
           <Form.Item label="请求参数" name="userRequestParams">
             <Input.TextArea/>
+
           </Form.Item>
           <Form.Item wrapperCol={{span: 16}}>
             <Button type="primary" htmlType="submit">

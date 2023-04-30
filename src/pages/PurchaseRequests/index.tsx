@@ -16,7 +16,7 @@ import {
   Tooltip
 } from 'antd';
 import React, {useRef, useState} from 'react';
-import {FormattedMessage, history, useModel} from "@@/exports";
+import {FormattedMessage, useModel} from "@@/exports";
 import {listInterfaceInfoByPageUsingGET} from "@/services/alias-openapi-backend/interfaceInfoController";
 import {getAvailableInterfaceInfoUsingGET} from "@/services/alias-openapi-backend/userInterfaceInfoController";
 
@@ -87,7 +87,7 @@ const Index: React.FC = () => {
         width: 120,
         render: (_, record) => [
           <Button type="primary" shape="round" loading={loading} onClick={async () => {
-            await getOrderToken(), setConfirmOrderModal(true) , setTotalMoney(record.price), actionRef.current?.reload(), setConfirmData(record)
+            await setConfirmOrderModal(true) , setTotalMoney(record.price), actionRef.current?.reload(), setConfirmData(record)
           }}>
             购买次数
           </Button>
@@ -153,28 +153,30 @@ const Index: React.FC = () => {
    */
   const submitOrder = async () => {
     setConfirmLoading(true)
-    try {
-      const res = await generateOrderSnUsingPOST({
-        userId: initialState?.loginUser?.id,
-        totalAmount: totalMoney,
-        orderNum: inputNumberValue,
-        interfaceId: confirmData?.id,
-        charging: confirmData?.price
-      })
-      if (res.code === 0) {
-        actionRef.current?.reload()
-        message.success("提交成功")
-        setConfirmLoading(false)
-        setConfirmOrderModal(false)
-        setInputNumberValue(1)
-        history.push("/Order/order", res.data)
-      }
-    } catch (e) {
-      message.error("提交失败，请刷新后重试")
-      setConfirmLoading(false)
-      setConfirmOrderModal(false)
-      setInputNumberValue(1)
-    }
+    // try {
+    //   const res = await generateOrderSnUsingPOST({
+    //     userId: initialState?.loginUser?.id,
+    //     totalAmount: totalMoney,
+    //     orderNum: inputNumberValue,
+    //     interfaceId: confirmData?.id,
+    //     charging: confirmData?.price
+    //   })
+    //   if (res.code === 0) {
+    //     actionRef.current?.reload()
+    //     message.success("提交成功")
+    //     setConfirmLoading(false)
+    //     setConfirmOrderModal(false)
+    //     setInputNumberValue(1)
+    //     history.push("/Order/order", res.data)
+    //   }
+    // } catch (e) {
+    //   message.error("提交失败，请刷新后重试")
+    //   setConfirmLoading(false)
+    //   setConfirmOrderModal(false)
+    //   setInputNumberValue(1)
+    // }
+    alert("暂未开放，敬请期待")
+    setConfirmLoading(false)
   }
 
   /**
@@ -182,7 +184,7 @@ const Index: React.FC = () => {
    */
   const getOrderToken = async () => {
     setLoading(true)
-    await generateTokenUsingGET({id: initialState?.loginUser?.id})
+    // await generateTokenUsingGET({id: initialState?.loginUser?.id})
     setLoading(false)
   }
 

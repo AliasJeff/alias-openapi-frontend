@@ -5,7 +5,6 @@ import {
 import React, {useEffect, useRef, useState} from 'react';
 import {Badge, Button, message, Popconfirm, Popover, Space, Tag, Tooltip} from "antd";
 import ProList from "@ant-design/pro-list/lib";
-import {cancelOrderSnUsingPOST, getCurrentOrderInfoUsingPOST} from "@/services/api-order/orderController";
 import {history, useModel} from "@@/exports";
 import {request} from "@umijs/max";
 

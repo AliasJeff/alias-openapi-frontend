@@ -47,6 +47,25 @@ export async function getInterfaceInfoByIdUsingGET(
   });
 }
 
+/** getInterfaceCount GET /api/interfaceInfo/getInterfaceCount */
+export async function getInterfaceCountUsingGET(options?: { [key: string]: any }) {
+  return request<API.BaseResponselong>('/api/interfaceInfo/getInterfaceCount', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
+
+/** getInterfaceInvokeCount GET /api/interfaceInfo/getInterfaceInvokeCount */
+export async function getInterfaceInvokeCountUsingGET(options?: { [key: string]: any }) {
+  return request<API.BaseResponseListInterfaceInfoVO>(
+    '/api/interfaceInfo/getInterfaceInvokeCount',
+    {
+      method: 'GET',
+      ...(options || {}),
+    },
+  );
+}
+
 /** invokeInterface POST /api/interfaceInfo/invoke */
 export async function invokeInterfaceUsingPOST(
   body: API.InterfaceInfoInvokeRequest,
