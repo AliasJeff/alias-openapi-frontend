@@ -225,7 +225,7 @@ const Login: React.FC = () => {
           formRef={formRef}
           logo={<img alt="logo" src="/logo.svg"/>}
           title="Alias-API开放平台"
-          subTitle={intl.formatMessage({id: 'Ant Design 是西湖区最具影响力的 Web 设计规范'})}
+          subTitle={intl.formatMessage({id: 'Alias-API开放平台'})}
           initialValues={{
             autoLogin: true,
           }}

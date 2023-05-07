@@ -145,4 +145,6 @@ export default defineConfig({
     strategy: 'normal',
   },
   requestRecord: {},
+  // exportStatic: {}, // 服务器
+
 });
