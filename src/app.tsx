@@ -113,4 +113,5 @@ export const layout: RunTimeLayoutConfig = ({initialState, setInitialState}) => 
  */
 export const request = {
   ...requestConfig,
+  withCredentials: true,
 };

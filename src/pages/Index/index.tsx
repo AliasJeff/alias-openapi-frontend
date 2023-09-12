@@ -34,8 +34,6 @@ const Index: React.FC = () => {
       const resInterface = await getInterfaceCountUsingGET()
       //获取接口总调用数
       const resInvoke = await getInvokeCountUsingGET()
-      //获取GitHub上该项目的stars
-      const resStars = await getStarsUsingGET()
 
       //获取图表数据
       const chartsData = await getInterfaceInvokeCountUsingGET();
@@ -48,13 +46,16 @@ const Index: React.FC = () => {
 
       setInterfaceCount(resInterface?.data)
       setInvokeCount(resInvoke?.data)
-      setStarsCount(resStars?.data)
-      // setOrderSuccess(0)
+
       setActiveUser(resUser?.data)
+
+      //异步获取stars数据
+      // getStarsUsingGET().then(res => {
+      //   setStarsCount(res?.data)
+      // });
     } catch (e) {
     }
   }
-
 
   return (
     <PageContainer key="index">
@@ -74,10 +75,10 @@ const Index: React.FC = () => {
       />
 
       <Row style={{marginTop: 20}} gutter={16}>
-        <Col span={6}>
+        <Col span={7}>
           <Card bordered={false}>
             <Statistic
-              title="全 站 用 户 数"
+              title="全  站  用  户  数"
               value={activeUser}
               valueStyle={{color: '#0000FF'}}
               prefix={<UserOutlined/>}
@@ -85,7 +86,7 @@ const Index: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={7}>
           <Card bordered={false}>
             <Statistic
               title="全 站 可 调 用 接 口 数"
@@ -96,7 +97,7 @@ const Index: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={7}>
           <Card bordered={false}>
             <Statistic
               title="全 站 接 口 总 调 用 数"
@@ -106,15 +107,21 @@ const Index: React.FC = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
-          <Card bordered={false}>
-            <Statistic
-              title="Stars"
-              value={starsCount}
-              prefix={<LikeOutlined/>}
-            />
-          </Card>
-        </Col>
+        {/*<Col span={6}>*/}
+        {/*  <Card bordered={false}>*/}
+        {/*    {!starsCount ? (*/}
+        {/*      <Spin/>*/}
+        {/*    ) : (*/}
+        {/*      <Statistic*/}
+        {/*        title={'Stars 数'}*/}
+        {/*        value={starsCount}*/}
+        {/*        prefix={<LikeOutlined/>}*/}
+        {/*      />*/}
+        {/*    )*/}
+        {/*    }*/}
+
+        {/*  </Card>*/}
+        {/*</Col>*/}
       </Row>
 
       <Row

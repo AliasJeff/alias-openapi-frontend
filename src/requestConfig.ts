@@ -33,8 +33,8 @@ interface ResponseStructure {
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const requestConfig: RequestConfig = {
-  baseURL: "http://localhost:8080",
-  // baseURL: "http://124.222.157.108", // 服务器公网ip
+  // baseURL: "http://localhost:8080",
+  baseURL: "http://182.92.113.148", // 服务器公网ip
   withCredentials: true,
   // 请求拦截器
   requestInterceptors: [
